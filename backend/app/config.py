@@ -43,7 +43,7 @@ def load_settings() -> Settings:
     database_url = os.getenv("DATABASE_URL", "sqlite:///./app.db").strip() or "sqlite:///./app.db"
 
     raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
-    allowed_origins = [o.strip() for o in raw_origins.split(",") if o.strip()]
+    allowed_origins = [o.strip().rstrip("/") for o in raw_origins.split(",") if o.strip()]
 
     enable_sim = os.getenv("ENABLE_FAILURE_SIMULATION", "false").strip().lower() == "true"
 
