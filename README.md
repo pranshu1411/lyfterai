@@ -4,7 +4,7 @@ Full-stack LLM chatbot built with React (Vite), FastAPI, LiteLLM, and SQLite. Su
 
 ## 1. Live URLs
 
-- **Frontend:** https://lyfterai-ochre.vercel.app
+- **Frontend:** https://lyfterai-ten.vercel.app
 - **Backend:** https://lyfterai.onrender.com
 - **Health Check:** https://lyfterai.onrender.com/health
 
