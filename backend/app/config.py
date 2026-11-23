@@ -14,7 +14,7 @@ class KeyEntry:
 @dataclass(frozen=True)
 class Settings:
     key_pool: list[KeyEntry] = field(default_factory=list)
-    default_model: str = "gemini/gemini-2.0-flash"
+    default_model: str = "groq/openai/gpt-oss-20b"
     default_system_prompt: str = "You are a helpful, concise assistant."
     database_url: str = "sqlite:///./app.db"
     allowed_origins: list[str] = field(default_factory=lambda: ["http://localhost:3000"])
@@ -26,7 +26,10 @@ def load_settings() -> Settings:
     raw_keys = os.getenv("LLM_API_KEYS", "")
     keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
 
-    default_model = os.getenv("LLM_MODEL", "gemini/gemini-2.0-flash").strip() or "gemini/gemini-2.0-flash"
+    default_model = (
+        os.getenv("LLM_MODEL", "groq/openai/gpt-oss-20b").strip()
+        or "groq/openai/gpt-oss-20b"
+    )
     raw_models = os.getenv("LLM_MODELS", "").strip()
     models = [m.strip() for m in raw_models.split(",") if m.strip()] if raw_models else []
 
